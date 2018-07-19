@@ -6,15 +6,18 @@ from flask_script import Manager
 from .controllers import home
 
 app = Flask(__name__, template_folder='views')
+app.config.from_object('config')
+db = SQLAlchemy(app)
 
 def create_app(app):
-    app.config.from_object('config')
-    database = SQLAlchemy(app)
 
     home.configure(app)
 
-    migrate = Migrate(app, database)
+    migrate = Migrate(app, db)
     manager = Manager(app)
     manager.add_command('db', MigrateCommand)
+
+    # Instancias dos modelos de dados da aplicação
+    from .models.user_model import User
 
     manager.run()
