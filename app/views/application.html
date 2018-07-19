@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}GECAMP - Flask 2018{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/boostrap-4.0.0.min.css') }}">
+</head>
+<body>
+
+    {% block content %}{% endblock %}
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/boostrap-4.0.0.min.js') }}"></script>
+</body>
+</html>
