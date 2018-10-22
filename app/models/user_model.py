@@ -9,6 +9,18 @@ class User(db.Model):
     passowrd = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
+    @property
+    def is_authenticated(self): return True
+
+    @property
+    def is_activated(self): return True
+
+    @property
+    def is_anonymous(self): return False
+
+    def get_id(self): return str(self.id)
+
+
 
     def __init__(self, user_name, password):
         self.username = user_name

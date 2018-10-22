@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
@@ -12,6 +13,10 @@ db = SQLAlchemy(app)
 def create_app(app):
 
     home.configure(app)
+
+    # LoginManager
+    login_manager = LoginManager()
+    login_manager.init_app(app)
 
     migrate = Migrate(app, db)
     manager = Manager(app)
